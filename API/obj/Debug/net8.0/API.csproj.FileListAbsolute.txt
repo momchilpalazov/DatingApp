@@ -30,3 +30,4 @@ C:\Users\Palazov\DatingApp\api\obj\Debug\net8.0\refint\API.dll
 C:\Users\Palazov\DatingApp\api\obj\Debug\net8.0\API.pdb
 C:\Users\Palazov\DatingApp\api\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\Palazov\DatingApp\api\obj\Debug\net8.0\ref\API.dll
+C:\Users\Palazov\datingapp\api\obj\Debug\net8.0\API.sourcelink.json
