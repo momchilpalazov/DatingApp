@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj": {}
+    "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj": {
+    "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj",
+        "projectPath": "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Palazov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Palazov\\DatingApp\\api\\obj\\",
+        "outputPath": "C:\\Users\\Palazov\\DatingApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Palazov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,9 +45,19 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Swashbuckle.AspNetCore": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             }
           },
           "imports": [
