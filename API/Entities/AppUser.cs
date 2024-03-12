@@ -1,10 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace API.Entities;
+namespace API.Entities
+{
+    public class AppUser : IdentityUser
+    {
+        
+    }
+};
 
 public class AppUser
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     public string UserName { get; set; }   
 
 }
