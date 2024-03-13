@@ -9,7 +9,7 @@ import { OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  title = 'Hello, World!  This is my first Angular app!';
+  title = 'Dating app';
   users: any;
   constructor(private  http: HttpClient) {}  
 
