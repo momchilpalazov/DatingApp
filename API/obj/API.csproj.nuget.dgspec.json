@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj": {}
+    "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj": {
+    "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj",
         "packagesPath": "C:\\Users\\Palazov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Palazov\\DatingApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\Palazov\\DatingApp\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Palazov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
