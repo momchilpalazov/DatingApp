@@ -3,6 +3,7 @@ using System.Text;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,16 +14,19 @@ public class AccountController: BaseController
 
     private readonly DaitingAppDbContext _context;
 
+    private readonly ITokenService _tokenService;
 
-    public AccountController(DaitingAppDbContext context)
+
+    public AccountController(DaitingAppDbContext context, ITokenService tokenService)
     {
         _context = context;
+        _tokenService = tokenService;
     }
-
+   
 
     [HttpPost]
     [Route("register")] //api/account/register
-    public async Task <ActionResult<AppUser>> Register(RegisterDto register)
+    public async Task <ActionResult<UserDto>> Register(RegisterDto register)
     {
 
         if(await UserExists(register.Username)) return BadRequest("Username is taken");
@@ -38,13 +42,18 @@ public class AccountController: BaseController
 
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
-        return user;
+        return new UserDto
+        {
+            Username = user.UserName,
+            Token = _tokenService.CreateToken(user)
+        };
 
     }
 
 
     [HttpPost]
-    public async Task <ActionResult<AppUser>> Login(LoginDto login)
+    [Route("login")] //api/account/login
+    public async Task <ActionResult<UserDto>> Login(LoginDto login)
     {
 
         var user = await _context.Users.SingleOrDefaultAsync(u=>u.UserName==login.Username);
@@ -60,7 +69,11 @@ public class AccountController: BaseController
            if (computedHash[i]!=user.PasswordHash[i]) return Unauthorized("Invalid password" );
         }
 
-        return user;
+        return new UserDto
+        {
+            Username = user.UserName,
+            Token = _tokenService.CreateToken(user)
+        };
 
     }
 
