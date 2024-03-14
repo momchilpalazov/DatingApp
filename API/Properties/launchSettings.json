@@ -5,6 +5,7 @@
         "http": {
             "commandName": "Project",
             "dotnetRunMessages": true,
+            "hotReloadEnabled": true,
             "launchBrowser": false,
             "applicationUrl": "http://localhost:5000;https://localhost:5001",
             "environmentVariables": {
