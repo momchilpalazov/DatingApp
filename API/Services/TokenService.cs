@@ -17,30 +17,37 @@ public class TokenService : ITokenService
 
     }
 
-    public string CreateToken(AppUser user)
+   public string CreateToken(AppUser user)
     {
-
-        var claims= new List<Claim>()
+        try
         {
+            var claims= new List<Claim>()
+            {
+                new Claim(JwtRegisteredClaimNames.NameId,user.UserName) //username
+            };
 
-            new Claim(JwtRegisteredClaimNames.NameId,user.UserName) ,//username
-            
-            //add more claim if needed
+            var creds= new SigningCredentials(_key,SecurityAlgorithms.HmacSha512Signature); //signing key and algorithm to use
 
-        };
+            var tokenDescription = new SecurityTokenDescriptor
+            {
+                Subject =new ClaimsIdentity(claims),
+                Expires=DateTime.UtcNow.AddDays(7),
+                SigningCredentials =  creds                
+            };
 
-        var creds= new SigningCredentials(_key,SecurityAlgorithms.HmacSha512Signature); //signing key and algorithm to use
-
-        var tokenDescription= new SecurityTokenDescriptor
+            var tokenHandler=  new JwtSecurityTokenHandler ();
+            var token=tokenHandler.CreateToken(tokenDescription);
+            return tokenHandler.WriteToken(token);
+        }
+        catch (Exception ex)
         {
-            Subject =new ClaimsIdentity(claims),
-            Expires=DateTime.Now.AddDays(7),
-            SigningCredentials =  creds                
-
-        };
-
-        var tokenHandler= new JwtSecurityTokenHandler();
-        var token=tokenHandler.CreateToken(tokenDescription);
-        return tokenHandler.WriteToken(token);
+            //  log error
+            Console.WriteLine(ex.Message);
+            return null;
+        }
     }
+
 }
+
+
+

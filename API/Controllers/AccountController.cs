@@ -4,6 +4,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,13 +15,14 @@ public class AccountController: BaseController
 
     private readonly DaitingAppDbContext _context;
 
-    private readonly ITokenService _tokenService;
+    private readonly  ITokenService _tokenService;
 
 
     public AccountController(DaitingAppDbContext context, ITokenService tokenService)
     {
         _context = context;
         _tokenService = tokenService;
+        
     }
    
 
@@ -42,11 +44,13 @@ public class AccountController: BaseController
 
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
+
         return new UserDto
         {
             Username = user.UserName,
             Token = _tokenService.CreateToken(user)
         };
+       
 
     }
 
@@ -73,7 +77,8 @@ public class AccountController: BaseController
         {
             Username = user.UserName,
             Token = _tokenService.CreateToken(user)
-        };
+        };    
+        
 
     }
 

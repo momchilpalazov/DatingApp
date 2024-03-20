@@ -18,23 +18,23 @@
                         <a class="nav-link" href="#">Lists</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Messages</a>
+                        <a class="nav-link" href="#" >Messages</a>
                     </li>
                     <li class="nav-item"  (click)="logout()"> 
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Logout</a>
+                        <a class="nav-link " href="#" >Logout</a>
                     </li>
-                </ul>
+                </ul>              
 
-                <div class="dropdown"  *ngIf="loggedIn">
+                <div class="dropdown" *ngIf="loggedIn">
 
-                    <a href="" class="dropdwon-toogle text-bg-light">Welcome User</a>
+                    <a  class="dropdwon-toogle text-light">Welcome User</a>
                     <div class="dropdown-menu">
-                        <a href="" class="dropdown-item">My Profile</a>
-                        <a href="" class="dropdown-item">My Account</a>
-                        <a href="" class="dropdown-item" (click)="logout()">Logout</a>
-                    </div> 
+                        <a  class="dropdown-item">Edit Profile</a>                        
+                        <a  class="dropdown-item" (click)="logout()">Logout</a>
+                    </div>                     
 
                 </div>
+
                 <form *ngIf="!loggedIn" #loginForm="ngForm"  class="d-flex" (ngSubmit)="login()" autocomplete="off">
                     <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="Username" >
                     <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password" placeholder="Password" >
