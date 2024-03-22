@@ -18,8 +18,19 @@ export class NavbarComponent implements OnInit{
 
   }
   ngOnInit(): void {
+    this.getCurrentUser();
     
   }
+
+
+  getCurrentUser(){
+    this.accountService.curentUser$.subscribe({
+        next:user=> this.loggedIn= !!user,
+        error:error=> console.log(error)
+        });
+  }
+
+
 
   login() {
 
