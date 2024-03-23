@@ -1,8 +1,8 @@
 
 
-<div class="hero-section">
+<div  class="hero-section">
     <div *ngIf="!registerMode"  class="container">
-      <div  class="hero-content">
+      <div  class="hero-content center">
         <h1 class="hero-title">Find you love</h1>
         <p class="hero-description">Come on in to view your matches... all you need to do is sign up</p>
         <div class="hero-buttons">
@@ -13,11 +13,8 @@
     </div>
    
     <div *ngIf="registerMode" class="hero-section">
-        <div class="row justify-content-center">
-            
-                <h1 class="hero-title">Register</h1>
-            
+        <div class="row justify-content-center">            
+                <app-register  (cancelRegister)="cancelRegisterMode($event)"></app-register>             
         </div>
-    </div>
-    
+    </div>    
  </div>

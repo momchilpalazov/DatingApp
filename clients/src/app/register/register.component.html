@@ -1,0 +1,32 @@
+<div class="register-container">
+    <div class="register-card">
+      <h2 class="register-heading">Sign Up</h2>
+      <form #registerForm="ngForm" (ngSubmit)="register()">
+        <div class="form-group">
+          <label for="name">Username</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.userName" required>        
+        </div>
+<!-- 
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="model.email" required>
+        </div> -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password" required>
+        </div>
+        <!-- <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="model.confirmPassword" required>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="agreeTerms" name="agreeTerms" [(ngModel)]="model.agreeTerms" required>
+          <label class="form-check-label" for="agreeTerms">I agree to the terms and conditions</label>
+        </div> -->
+        <div class="form-group form-buttons">
+          <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Sign Up</button>
+          <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
