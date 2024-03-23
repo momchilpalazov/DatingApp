@@ -1,29 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from "../register/register.component";
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
     selector: 'app-home',
-    standalone: true,
+    
     templateUrl: './home.component.html',
-    styleUrl: './home.component.css',
-    providers: [BsDropdownModule, FormsModule, BrowserAnimationsModule],
-    exportAs: 'HomeComponent',
-    imports: [
-        BrowserAnimationsModule,
-        FormsModule,
-        HomeComponent,
-        RegisterComponent
-    ]
+    styleUrls: ['./home.component.css']
+    
 })
-export class HomeComponent implements OnInit {
+export  class HomeComponent implements OnInit {
 
   registerMode = false;
   users: any;
-  constructor(private http:HttpClient) { }
+  constructor(public http:HttpClient) { }
 
   ngOnInit(): void {
 

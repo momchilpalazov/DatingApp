@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { HomeComponent } from "./home/home.component";
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+
+
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavbarComponent
+        NavbarComponent,
+        HomeComponent,
+        RegisterComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -23,9 +27,8 @@ import { HomeComponent } from "./home/home.component";
         HttpClientModule,
         BrowserAnimationsModule,
         FormsModule,
-        BsDropdownModule.forRoot(),
-        HomeComponent
-
+        BsDropdownModule,
+        
     ]
 })
 export class AppModule { }

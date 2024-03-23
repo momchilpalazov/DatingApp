@@ -1,21 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output, input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Component, EventEmitter, Input, OnInit, Output, input } from '@angular/core';;
 import { AccountService } from '../_services/account.service';
+
 
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [
-
-    BrowserAnimationsModule,
-    FormsModule,    
-    RegisterComponent,
-
-  ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
+  
+  
 })
 export class RegisterComponent implements OnInit{
 

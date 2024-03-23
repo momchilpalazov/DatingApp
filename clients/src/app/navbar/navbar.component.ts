@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../_services/account.service';
-import { Observable, of } from 'rxjs';
-import { User } from '../_models/users';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
-  
+  styleUrls: ['./navbar.component.css'],  
   
 }) 
 export class NavbarComponent implements OnInit{
@@ -15,21 +14,19 @@ export class NavbarComponent implements OnInit{
   model: any = {};
   
 
-  constructor( public accountService: AccountService ) { 
+  constructor( public accountService: AccountService, private router: Router) { 
 
   }
-  ngOnInit(): void {
-    
+  ngOnInit(): void {    
     
   }
-
 
   login() {
 
     this.accountService.login(this.model).subscribe( {
 
       next:responce=> {
-        console.log(responce);
+        this.router.navigateByUrl('/members');
         
       } ,
       error: error=> {
@@ -42,12 +39,10 @@ export class NavbarComponent implements OnInit{
 
   logout(){
 
-    this.accountService.logout();
+    this.accountService.logout(); 
+    this.router.navigateByUrl('/');   
   
-  }
-
-
-  
+  }  
 
 
 }
