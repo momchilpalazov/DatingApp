@@ -34,6 +34,7 @@
           },
           "configurations": {
             "production": {
+              "browserTarget": "clients:build:production" ,
               "budgets": [
                 {
                   "type": "initial",
@@ -49,6 +50,7 @@
               "outputHashing": "all"
             },
             "development": {
+              "browserTarget": "clients:build:development" ,
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -68,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "clients:build:production"
+              "browserTarget": "clients:build:production"
             },
             "development": {
-              "buildTarget": "clients:build:development"
+              "browserTarget": "clients:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "clients:build"
+            "browserTarget": "clients:build"
           }
         },
         "test": {
@@ -107,3 +109,4 @@
     "analytics": false
   }
 }
+
