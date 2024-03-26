@@ -13,7 +13,8 @@
     "axe/structure": [
       "default",
       {
-        "list": "off"
+        "list": "off",
+        "listitem": "off"
       }
     ]
   }
