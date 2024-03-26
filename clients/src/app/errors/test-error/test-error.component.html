@@ -1,0 +1,32 @@
+<div class="container">
+    <ng-container >
+
+    <h1 class="text-center">Test Errors</h1>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-header">
+            <h4>Generate Errors</h4>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-danger btn-block" (click)="get404Error()">404 Error</button>
+            <button class="btn btn-danger btn-block" (click)="get400Error()">400 Error</button>
+            <button class="btn btn-danger btn-block" (click)="get500Error()">500 Error</button>
+            <button class="btn btn-danger btn-block" (click)="get401Error()">401 Error</button>
+            <button class="btn btn-danger btn-block" (click)="get400ValidationError()">400 Validation Error</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class=" row-mt5" *ngIf="validationErrors.length>0">
+    
+        <ul class="text-danger">
+          <li  *ngFor="let error of validationErrors">{{error}}</li>
+        </ul>
+    
+    </div>
+
+    </ng-container>
+    
+  </div>

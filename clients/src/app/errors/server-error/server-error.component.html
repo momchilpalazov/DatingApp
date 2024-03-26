@@ -1,0 +1,28 @@
+
+<h4>Internal server error-refresching the page will make the error disappier </h4>
+<ng-container *ngIf="error">
+  <div class="alert alert-danger">
+    <div>
+      <strong>Oops! </strong> Something went wrong.
+    </div>
+    
+    <h5 class='text-danger'>Error: {{error.message}}</h5>
+    
+    <p>
+      Please try again later.Or you can contact us if the problem persists.What to do next?
+    </p>
+    <p>What to do next?</p>
+    <ol>
+        <li>Open the chrome dev tools</li>
+        <li>Inspect the network tab</li>
+        <li>Check the failing request</li>
+        <li>Examine the request URL - make sure it is correct</li>
+        <li>Reproduce the error in Postman - if we see the same response, then the issue is not with Angular</li>
+    </ol>
+    <p>Following is the stack trace - this is where your investigation should start!</p>
+    <code class="mt-5" style="background-color:black;">{{error.details}}</code>
+  
+
+  </div>
+
+</ng-container>

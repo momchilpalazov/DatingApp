@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +12,10 @@ import { ScharedModule } from './_modules/schared/schared.module';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberDetailsComponent } from './members/member-details/member-details.component';
 import { MessagesComponent } from './messages/messages.component';
+import { TestErrorComponent } from './errors/test-error/test-error.component';
+import { ErrorInterceptor } from './_intercepters/error.interceptor';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
 
 
@@ -23,9 +27,16 @@ import { MessagesComponent } from './messages/messages.component';
         RegisterComponent,
         MemberListComponent,
         MemberDetailsComponent,
-        MessagesComponent
+        MessagesComponent,
+        TestErrorComponent,
+        NotFoundComponent,
+        ServerErrorComponent
     ],
-    providers: [],
+    providers: [
+
+       {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } 
+
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
