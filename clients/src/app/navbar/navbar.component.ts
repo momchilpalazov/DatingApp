@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../_services/account.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit{
   model: any = {};
   
 
-  constructor( public accountService: AccountService, private router: Router) { 
+  constructor( public accountService: AccountService, private router: Router,private toaster:ToastrService) { 
 
   }
   ngOnInit(): void {    
@@ -30,7 +31,7 @@ export class NavbarComponent implements OnInit{
         
       } ,
       error: error=> {
-        console.log(error);
+        this.toaster.error(error.error);
       }
       
     });  

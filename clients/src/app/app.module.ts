@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -27,7 +28,10 @@ import { RegisterComponent } from './register/register.component';
         HttpClientModule,
         BrowserAnimationsModule,
         FormsModule,
-        BsDropdownModule,
+        BsDropdownModule.forRoot(),
+        ToastrModule.forRoot({
+            positionClass: 'toast-bottom-right'
+        }),
         
     ]
 })
