@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { ToastrModule } from 'ngx-toastr';
+import { ScharedModule } from './_modules/schared/schared.module';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailsComponent } from './members/member-details/member-details.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
@@ -18,7 +20,10 @@ import { ToastrModule } from 'ngx-toastr';
         AppComponent,
         NavbarComponent,
         HomeComponent,
-        RegisterComponent
+        RegisterComponent,
+        MemberListComponent,
+        MemberDetailsComponent,
+        MessagesComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -28,11 +33,8 @@ import { ToastrModule } from 'ngx-toastr';
         HttpClientModule,
         BrowserAnimationsModule,
         FormsModule,
-        BsDropdownModule.forRoot(),
-        ToastrModule.forRoot({
-            positionClass: 'toast-bottom-right'
-        }),
-        
+        ScharedModule
+       
     ]
 })
 export class AppModule { }
