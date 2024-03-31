@@ -1,6 +1,6 @@
-﻿using System.Text;
-using API.Data;
+﻿using API.Data;
 using API.Interfaces;
+using API.Repository;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
 namespace API.Extensions;
@@ -15,7 +15,9 @@ public static IServiceCollection AddApplicationServices(this IServiceCollection 
         });
 
         services.AddCors();
-        services.AddScoped<ITokenService,TokenService>();       
+        services.AddScoped<ITokenService,TokenService>();  
+        services.AddScoped<IUserRepository,UserRepository>();
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());     
        
         return services;      
 
