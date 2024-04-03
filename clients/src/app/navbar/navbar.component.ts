@@ -29,8 +29,7 @@ export class NavbarComponent implements OnInit{
       next:responce=> {
         this.router.navigateByUrl('/members');
         
-      } ,
-     
+      }    
       
     });  
   
