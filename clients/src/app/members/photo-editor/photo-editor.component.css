@@ -1,0 +1,8 @@
+.nv-file-over{
+    border: 5px dashed red;
+
+}
+
+input[type="file"] {
+    display: none;
+}
