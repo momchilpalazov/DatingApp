@@ -3,12 +3,15 @@
         <img src="{{photo.url}}" alt="{{photo.url}}" class="img-thumbnail p-1">
         <div class="d-flex">
             <button 
-               
+
+                [disabled]="photo.isMain"
+                (click)="setMainPhoto(photo)"              
                 [ngClass]='photo.isMain ? "btn-success active" : "btn-outline-success"'
                 class="btn btn-sm flex-grow-1"
             >Main</button>
             <button 
-                
+                [disabled]="photo.isMain"
+                (click)="deletePhoto(photo.id)"                 
                 class="btn btn-sm btn-danger flex-grow-1"
             ><i class="fa fa-trash"></i></button>
         </div>

@@ -11,49 +11,48 @@ import { environment } from 'src/environments/environment';
 export class AccountService {
 
   baseUrl= environment.apiUrl;
-  private currentUsreSource= new BehaviorSubject<User | null>(null);
-  curentUser$= this.currentUsreSource.asObservable();
+  private currentUserSource= new BehaviorSubject<User | null>(null);
+  curentUser$= this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient ) { }
+
+  setCurrentUser(user: User){
+    localStorage.setItem('user', JSON.stringify(user));
+    this.currentUserSource.next(user);
+   
+  }
 
   login(model: any){
     return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
         if(user){
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUsreSource.next(user);
+          
+          this.setCurrentUser(user);
         }
       })
     );      
     
-  }
+  }  
 
-  setCurrentUser(user: User){
-    this.currentUsreSource.next(user);
-  }
-
-  register(model:any) {
-    
+  register(model:any) {    
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
-      map((user: User) => {
+      map((user) => {
         if(user){
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUsreSource.next(user);
+          this.setCurrentUser(user);
         }
-        return user;
       })
     );
-
-
   }
   
   logout() {
     localStorage.removeItem('user');
-    this.currentUsreSource.next(null);
+    this.currentUserSource.next(null);
   }
 
   getUserData(){
     return this.http.get(this.baseUrl + 'account');
   }
+
+ 
 }
