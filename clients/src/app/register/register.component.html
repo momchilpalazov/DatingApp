@@ -1,32 +1,54 @@
-<div class="register-container">
-    <div class="register-card">
-      <h2 class="register-heading">Sign Up</h2>
-      <form #registerForm="ngForm" (ngSubmit)="register()">
-        <div class="form-group">
-          <label for="name">Username</label>
-          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.userName" required>        
+
+  <div class="register-card">
+    <h2 class="text-center text-primary">Sign Up</h2>
+
+    <form [formGroup]='registerForm' (ngSubmit)="registerForm.valid && register()" autocomplete="off">
+
+      <div class="form-group d-flex align-items-center mb-3">
+        <label class="me-2">I am:</label>
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" value="male" formControlName="gender">
+          <label class="form-check-label">Male</label>
         </div>
-<!-- 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="model.email" required>
-        </div> -->
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password" required>
+        <div class="form-check form-check-inline ms-2"> <input type="radio" class="form-check-input" value="female" formControlName="gender">
+          <label class="form-check-label">Female</label>
         </div>
-        <!-- <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="model.confirmPassword" required>
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="agreeTerms" name="agreeTerms" [(ngModel)]="model.agreeTerms" required>
-          <label class="form-check-label" for="agreeTerms">I agree to the terms and conditions</label>
-        </div> -->
-        <div class="form-group form-buttons">
-          <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Sign Up</button>
-          <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
-        </div>
-      </form>
-    </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <app-text-input [formControl]="$any(registerForm.controls['username'])" [label]="'Username'"></app-text-input>
+      </div>
+      <div class="form-group mb-3">
+        <app-text-input [formControl]="$any(registerForm.controls['knownAs'])" [label]="'Know As'"></app-text-input>
+      </div>
+      <div class="form-group mb-3">
+        <app-date-picker [formControl]="$any(registerForm.controls['dateOfBirth'])" [label]="'Date of Birth'" [maxDate]="maxDate"></app-date-picker>
+      </div>
+      <div class="form-group mb-3">
+        <app-text-input [formControl]="$any(registerForm.controls['city'])" [label]="'City'"></app-text-input>
+      </div>
+      <div class="form-group mb-3">
+        <app-text-input [formControl]="$any(registerForm.controls['country'])" [label]="'Country'"></app-text-input>
+      </div>
+      <div class="form-group mb-3">
+         <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Password'" [type]="'password'"></app-text-input>       
+      </div>
+      <div class="form-group mb-3">        
+       <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [label]="'Confirm Password'" [type]="'password'"></app-text-input>
+     </div>
+
+      <div class="row text-danger mb-3" *ngIf="validationErrors">
+        <ul class="list-unstyled"> <li *ngFor="let error of validationErrors">{{ error }}</li>
+        </ul>
+      </div>
+
+      <div class="form-group d-flex justify-content-between"> <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary">Sign Up</button>
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
   </div>
+
+
+
+  <!-- <p>Form value:{{registerForm.value|json}}</p>
+  <p>Form status:{{registerForm.status|json}}</p> -->
