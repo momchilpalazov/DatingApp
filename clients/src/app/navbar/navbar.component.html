@@ -5,7 +5,8 @@
         <div class="container">
             <a class="navbar-brand" routerLink="/" routerLinkActive="active">Dating App</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                 data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
@@ -30,7 +31,7 @@
                 </ul>              
                 <div class="dropdown" *ngIf="(accountService.curentUser$| async) as user" dropdown>
                     <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
-                    <a class="dropdown-toggle text-light ms-2 text-decoration-none" dropdownToggle>Welcome </a>
+                    <a class="dropdown-toggle text-light ms-2 text-decoration-none" dropdownToggle>Welcome {{user.knownAs}}</a>
                     <div class="dropdown-menu mt-3" *dropdownMenu>
                         <a routerLink='/member/edit' class="dropdown-item">Edit Profile</a>
                         <div class="dropdown-divider"></div>

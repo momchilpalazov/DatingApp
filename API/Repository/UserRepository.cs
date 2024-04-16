@@ -31,10 +31,20 @@ namespace API.Repository
         public async Task<PagedList<MemberDto>> GetMembersDtosAsync(UserParams userParams)
         {
 
-            var queries= _context.Users
-            .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-            .AsNoTracking();
-            return await PagedList<MemberDto>.CreateAsybc(queries,userParams.PageNumber,userParams.PageSize);
+            var queries= _context.Users.AsQueryable();
+
+            queries=queries.Where(u=>u.UserName!=userParams.CurrentUsername);
+            queries=queries.Where(u=>u.Gender==userParams.Gender);
+
+            var minDob=DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MaxAge-1));
+            var maxDob=DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
+
+            queries=queries.Where(u=>u.DateOfBirth>=minDob && u.DateOfBirth<=maxDob);
+            
+            return await PagedList<MemberDto>.CreateAsybc(
+            queries.AsNoTracking().ProjectTo<MemberDto>(_mapper.ConfigurationProvider),
+            userParams.PageNumber,
+            userParams.PageSize);
         }
 
         public async Task<AppUser> GetUserByIdAsync(int id)
