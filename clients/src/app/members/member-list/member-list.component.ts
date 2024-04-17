@@ -14,23 +14,20 @@ import { MembersService } from 'src/app/_services/members.service';
 })
 export class MemberListComponent implements OnInit {
 
+
+
   // members$: Observable<Member[]>|undefined;
 
   members: Member[] = [];
-
-  pagination: Pagination|undefined;
+  pagination: Pagination | undefined;
   userParams:UserParams|undefined;
-  user: User|undefined;
+  
+  genderList=[{value:'male',display:'Males'},{value:'female',display:'Females'}]
 
-  constructor(private memeberService:MembersService,private accountService:AccountService){
-    this.accountService.curentUser$.pipe(take(1)).subscribe({
-      next:user=>{
-        if(user){
-          this.userParams=new UserParams(user);
-          this.user=user;
-      }
-    }
-    })
+  constructor(private memeberService:MembersService){
+
+    this.userParams=this.memeberService.getUserParams();
+   
 
     }
 
@@ -41,22 +38,36 @@ export class MemberListComponent implements OnInit {
   }
 
   loadMembers(){
-    if(!this.userParams)return;
-     this.memeberService.getMembers(this.userParams).subscribe({
-      next: response=>{
-        if(response.result&&response.pagination){
-          this.members=response.result;
-          this.pagination=response.pagination;
-        }
-         
+    if(this.userParams)
+      {
+        this.memeberService.setUserParams(this.userParams);
+        this.memeberService.getMembers(this.userParams).subscribe({
+          next: response=>{
+            if(response.result&&response.pagination){
+              this.members=response.result;
+              this.pagination=response.pagination;
+            }
+             
+          }         
+        })
+
+
       }
-     
-    })
+    
+  }
+
+  resetFilters(){
+    
+      this.userParams= this.memeberService.resetUserParams();
+      this.loadMembers();
+    
+    
   }
 
   pageChanged(event: any){
     if(this.userParams&& this.userParams?.pageNumber==event.page){
       this.userParams.pageNumber=event.page;
+      this.memeberService.setUserParams(this.userParams);
       this.loadMembers();
     }    
   }

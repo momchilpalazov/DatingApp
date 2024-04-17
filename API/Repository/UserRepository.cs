@@ -40,6 +40,13 @@ namespace API.Repository
             var maxDob=DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
 
             queries=queries.Where(u=>u.DateOfBirth>=minDob && u.DateOfBirth<=maxDob);
+
+            queries= userParams.OrderBy
+             switch
+            {
+                "created" => queries.OrderByDescending(u=>u.Created),
+                _ => queries.OrderByDescending(u=>u.LastActive)
+            };
             
             return await PagedList<MemberDto>.CreateAsybc(
             queries.AsNoTracking().ProjectTo<MemberDto>(_mapper.ConfigurationProvider),
