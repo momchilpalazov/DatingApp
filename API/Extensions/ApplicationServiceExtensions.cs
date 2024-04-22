@@ -23,6 +23,7 @@ public static IServiceCollection AddApplicationServices(this IServiceCollection 
         services.AddScoped<IPhotoService,PhotoService>();
         services.AddScoped<LogUserActivity>();
         services.AddScoped<IlikeRepository,LikeRepository>();
+        services.AddScoped<IMessageRepository,MessageRepository>();
        
 
        
