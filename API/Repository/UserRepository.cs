@@ -48,7 +48,7 @@ namespace API.Repository
                 _ => queries.OrderByDescending(u=>u.LastActive)
             };
             
-            return await PagedList<MemberDto>.CreateAsybc(
+            return await PagedList<MemberDto>.CreateAsync(
             queries.AsNoTracking().ProjectTo<MemberDto>(_mapper.ConfigurationProvider),
             userParams.PageNumber,
             userParams.PageSize);

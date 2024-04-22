@@ -11,12 +11,14 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TimeagoModule } from 'ngx-timeago';
 
 
+
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    
  
     ToastrModule.forRoot({
         positionClass: 'toast-bottom-right'
