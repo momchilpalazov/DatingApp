@@ -1,9 +1,5 @@
-﻿using System.Security.Claims;
-using API.Entities;
-using API.Extensions;
+﻿using API.Extensions;
 using API.Interfaces;
-using AutoMapper;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace API.Helpers;

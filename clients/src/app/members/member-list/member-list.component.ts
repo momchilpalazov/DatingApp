@@ -18,7 +18,7 @@ export class MemberListComponent implements OnInit {
 
   // members$: Observable<Member[]>|undefined;
 
-  members: Member[] = [];
+  member: Member[] = [];
   pagination: Pagination | undefined;
   userParams:UserParams|undefined;
   
@@ -44,7 +44,7 @@ export class MemberListComponent implements OnInit {
         this.memeberService.getMembers(this.userParams).subscribe({
           next: response=>{
             if(response.result&&response.pagination){
-              this.members=response.result;
+              this.member=response.result;
               this.pagination=response.pagination;
             }
              

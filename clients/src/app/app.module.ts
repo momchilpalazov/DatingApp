@@ -26,6 +26,7 @@ import { ListsComponent } from './lists/lists.component';
 
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -43,6 +44,7 @@ import { ListsComponent } from './lists/lists.component';
         DatePickerComponent,
         MemberCardComponent,
         ListsComponent,
+     
         
        
     ],
