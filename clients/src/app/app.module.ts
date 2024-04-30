@@ -27,6 +27,7 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { HasRoleDirective } from './_dirictives/has-role.directive';
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 
 
 
@@ -51,7 +52,9 @@ import { UserManagementComponent } from './admin/user-management/user-management
         AdminPanelComponent,
         HasRoleDirective,
         PhotoManagementComponent,
-        UserManagementComponent
+        UserManagementComponent,
+        RolesModalComponent
+
         
        
     ],
@@ -71,8 +74,7 @@ import { UserManagementComponent } from './admin/user-management/user-management
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
-        ScharedModule
-        
+        ScharedModule       
         
        
     ]
