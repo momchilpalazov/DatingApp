@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj": {}
+    "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj": {
+    "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Palazov\\DatingApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Palazov\\DatingApp\\api\\API.csproj",
         "packagesPath": "C:\\Users\\Palazov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Palazov\\DatingApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\Palazov\\DatingApp\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Palazov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,17 +59,17 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

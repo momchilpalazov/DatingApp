@@ -25,12 +25,12 @@ export class RegisterComponent implements OnInit{
   constructor(private accountService: AccountService,private toaster:ToastrService ,private fb:FormBuilder,private router:Router   ) { }
 
   ngOnInit(): void {
-    this.initilizeForm();
+    this.initializeForm();
     this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
     
   }
 
-  initilizeForm(){
+  initializeForm(){
     this.registerForm = this.fb.group({
       gender: ['male'],
       username: ['',Validators.required],
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit{
       dateOfBirth: ['',Validators.required],
       city: ['',Validators.required],
       country: ['',Validators.required],
-      password: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]],
+      password: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(10)]],
       confirmPassword: ['',[Validators.required,this.matchValues('password')]],
     });
 

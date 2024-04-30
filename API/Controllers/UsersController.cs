@@ -30,6 +30,7 @@ public class UsersController : BaseController
     
    }
     
+   
     [HttpGet] //api/users    
     public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
     {
@@ -51,7 +52,7 @@ public class UsersController : BaseController
 
     }
 
-    
+  
     [HttpGet("{username}")]   //api/users/id
     public async Task<ActionResult<MemberDto>> GetUser(string username)
     {
