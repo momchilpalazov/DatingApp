@@ -23,6 +23,10 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { ListsComponent } from './lists/lists.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_dirictives/has-role.directive';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
 
 
 
@@ -44,7 +48,10 @@ import { ListsComponent } from './lists/lists.component';
         DatePickerComponent,
         MemberCardComponent,
         ListsComponent,
-     
+        AdminPanelComponent,
+        HasRoleDirective,
+        PhotoManagementComponent,
+        UserManagementComponent
         
        
     ],
