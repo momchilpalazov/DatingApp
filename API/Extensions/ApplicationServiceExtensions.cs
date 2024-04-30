@@ -24,6 +24,7 @@ public static IServiceCollection AddApplicationServices(this IServiceCollection 
         services.AddScoped<LogUserActivity>();
         services.AddScoped<IlikeRepository,LikeRepository>();
         services.AddScoped<IMessageRepository,MessageRepository>();
+        services.AddSignalR();
        
 
        
