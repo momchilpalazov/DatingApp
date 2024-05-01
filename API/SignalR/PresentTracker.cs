@@ -5,8 +5,10 @@ public class PresentTracker
     private static readonly Dictionary<string, List<string>> onlineUsers = new Dictionary<string, List<string>>();
 
 
-    public Task UserConnected(string username, string connectionId)
+    public Task<bool> UserConnected(string username, string connectionId)
     {
+
+        bool isOnline = false;
         lock (onlineUsers)
         {
             if (onlineUsers.ContainsKey(username))
@@ -17,31 +19,34 @@ public class PresentTracker
             else
             {
                 onlineUsers.Add(username, new List<string> { connectionId });
+                isOnline = true;
             }
 
            
         }
-
-        return Task.CompletedTask;
+             return Task.FromResult(isOnline);
 
     }
 
-    public  Task UserDisconnected(string username, string connectionId)
+    public  Task<bool> UserDisconnected(string username, string connectionId)
     {
+        bool isOffline = false;
         lock (onlineUsers)
         {
-            if (!onlineUsers.ContainsKey(username))
-            {
+            if (!onlineUsers.ContainsKey(username)) return Task.FromResult(isOffline);
+            
                 onlineUsers[username].Remove(connectionId);
-            }
+            
+         
 
             if (onlineUsers[username].Count == 0)
             {
                 onlineUsers.Remove(username);
+                isOffline = true;
             }
         }
 
-        return Task.CompletedTask;
+        return Task.FromResult(isOffline);
     }
 
 
@@ -56,7 +61,7 @@ public class PresentTracker
        return await Task.FromResult(users);
     }
 
-    public async Task<string[]> GetConnectionForUser(string username)
+    public static async Task<string[]> GetConnectionForUser(string username)
     {
         string[] connectionIds;
         lock (onlineUsers)
@@ -65,6 +70,25 @@ public class PresentTracker
         }
 
         return await Task.FromResult(connectionIds);
+    }
+
+
+    public async Task<string[]> GetConnectionForUsers(string[] usernames)
+    {
+        List<string> connectionIds = new List<string>();
+        lock (onlineUsers)
+        {
+            foreach (var username in usernames)
+            {
+                var connectionId = onlineUsers.GetValueOrDefault(username);
+                if (connectionId != null)
+                {
+                    connectionIds.AddRange(connectionId);
+                }
+            }
+        }
+
+        return await Task.FromResult(connectionIds.ToArray());
     }
 
 

@@ -44,7 +44,8 @@ using (var scope = app.Services.CreateScope())
         var context = services.GetRequiredService<DaitingAppDbContext>();
         var userManager= services.GetRequiredService<UserManager<AppUser>>();
         var roleManager= services.GetRequiredService<RoleManager<AppRole>>();
-        context.Database.Migrate();
+        await context.Database.MigrateAsync(); 
+        await context.Database.ExecuteSqlRawAsync("DELETE FROM [Connections]");      
         await SeedData.SeedUsers(userManager, roleManager);
     }
     catch (Exception ex)
