@@ -55,6 +55,13 @@ public class MessageRepository : IMessageRepository
         return await _context.Groups.Include(c => c.Connections).FirstOrDefaultAsync(c => c.Name == groupName);
     }
 
+    public async Task<Group> GetMessageGroupForConnection(string connectionId)
+    {
+        return await _context.Groups.Include(c => c.Connections)
+        .Where(c => c.Connections.Any(x => x.ConnectionId == connectionId))
+        .FirstOrDefaultAsync();
+    }
+
     public async Task<PagedList<MessageDto>> GetMessagesForUser( MessageParams messageParams)
     {
         var query = _context.Messages.OrderByDescending(m => m.MessageSent).AsQueryable();

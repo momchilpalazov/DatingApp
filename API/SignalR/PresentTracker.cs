@@ -61,16 +61,16 @@ public class PresentTracker
        return await Task.FromResult(users);
     }
 
-    public static async Task<string[]> GetConnectionForUser(string username)
-    {
-        string[] connectionIds;
-        lock (onlineUsers)
-        {
-            connectionIds = onlineUsers.GetValueOrDefault(username).ToArray();
-        }
+    // public async Task<string[]> GetConnectionForUser(string username)
+    // {
+    //     string[] connectionIds;
+    //     lock (onlineUsers)
+    //     {
+    //         connectionIds = onlineUsers.GetValueOrDefault(username).ToArray();
+    //     }
 
-        return await Task.FromResult(connectionIds);
-    }
+    //     return await Task.FromResult(connectionIds);
+    // }
 
 
     public async Task<string[]> GetConnectionForUsers(string[] usernames)

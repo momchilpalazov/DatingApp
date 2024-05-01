@@ -33,6 +33,24 @@ export class MessageService {
       this.messageThreadSource.next(messages);
     });  
 
+    this.hubConnection.on('UpdatedGroup', (group: any) => {
+      if(group.connections.some((x: { username: string; }) => x.username === otherUserName)){
+        this.messageThreadSource.pipe(take(1)).subscribe( {
+          next:messages => {
+          messages.forEach(message => {
+            if(!message.dateRead){
+              message.dateRead = new Date(Date.now());
+            }
+          });
+          this.messageThreadSource.next([...messages]);
+        }
+      });
+      
+      }
+
+    
+    });
+
     this.hubConnection.on('NewMessage', message => {
       this.messageThreadSource.pipe(take(1)).subscribe( {
         next:messages => {
@@ -42,11 +60,6 @@ export class MessageService {
 
   }
 )}
-
-
-
-
-
   stopHubConnection(){
     this.hubConnection?.stop().catch(error => console.log(error));
   }
