@@ -1,17 +1,15 @@
-﻿using Microsoft.AspNetCore.SignalR;
-
-namespace API.SignalR;
+﻿namespace API.SignalR;
 
 public class PresentTracker
 {
     private static readonly Dictionary<string, List<string>> onlineUsers = new Dictionary<string, List<string>>();
 
 
-    public async Task UserConnected(string username, string connectionId)
+    public Task UserConnected(string username, string connectionId)
     {
         lock (onlineUsers)
         {
-            if (!onlineUsers.ContainsKey(username))
+            if (onlineUsers.ContainsKey(username))
             {
                 onlineUsers[username].Add(connectionId);
             }
@@ -24,11 +22,11 @@ public class PresentTracker
            
         }
 
-         await Task.CompletedTask;
+        return Task.CompletedTask;
 
     }
 
-    public async Task UserDisconnected(string username, string connectionId)
+    public  Task UserDisconnected(string username, string connectionId)
     {
         lock (onlineUsers)
         {
@@ -43,7 +41,7 @@ public class PresentTracker
             }
         }
 
-        await Task.CompletedTask;
+        return Task.CompletedTask;
     }
 
 
