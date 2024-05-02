@@ -18,15 +18,16 @@ public static IServiceCollection AddApplicationServices(this IServiceCollection 
 
         services.AddCors();
         services.AddScoped<ITokenService,TokenService>();  
-        services.AddScoped<IUserRepository,UserRepository>();
+        // services.AddScoped<IUserRepository,UserRepository>();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  
         services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
         services.AddScoped<IPhotoService,PhotoService>();
         services.AddScoped<LogUserActivity>();
-        services.AddScoped<IlikeRepository,LikeRepository>();
-        services.AddScoped<IMessageRepository,MessageRepository>();
+        // services.AddScoped<IlikeRepository,LikeRepository>();
+        // services.AddScoped<IMessageRepository,MessageRepository>();
         services.AddSignalR();
        services.AddSingleton<PresentTracker>();
+        services.AddScoped<IUnitOfWorkRepository,UnitOfWork>();
 
        
         return services;      
