@@ -49,7 +49,7 @@ using (var scope = app.Services.CreateScope())
         var userManager= services.GetRequiredService<UserManager<AppUser>>();
         var roleManager= services.GetRequiredService<RoleManager<AppRole>>();
         await context.Database.MigrateAsync(); 
-        await context.Database.ExecuteSqlRawAsync("DELETE FROM [Connections]");      
+        await SeedData.ClearConections(context);   
         await SeedData.SeedUsers(userManager, roleManager);
     }
     catch (Exception ex)

@@ -136,3 +136,5 @@ C:\Users\Palazov\DatingApp\api\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.
 C:\Users\Palazov\DatingApp\API\bin\Debug\net8.0\CloudinaryDotNet.dll
 C:\Users\Palazov\DatingApp\API\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Palazov\DatingApp\api\bin\Debug\net8.0\API.staticwebassets.runtime.json
+C:\Users\Palazov\DatingApp\api\bin\Debug\net8.0\Npgsql.dll
+C:\Users\Palazov\DatingApp\api\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

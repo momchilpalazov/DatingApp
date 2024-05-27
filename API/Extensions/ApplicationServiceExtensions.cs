@@ -13,7 +13,9 @@ public static IServiceCollection AddApplicationServices(this IServiceCollection 
     {
         services.AddDbContext<DaitingAppDbContext>(options => 
         {
-            options.UseSqlite(config.GetConnectionString("DefaultConnection")); 
+            
+            options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+
         });
 
         services.AddCors();

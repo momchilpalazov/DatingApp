@@ -11,10 +11,20 @@ namespace API.Entities
 
         public string KnownAs { get; set; }
 
-        public DateTime Created { get; set; } = DateTime.Now;
+        private DateTime created;
 
-        public DateTime LastActive { get; set; } = DateTime.Now;
+        public DateTime Created
+        {
+            get => created;
+            set => created = DateTime.SpecifyKind(value, DateTimeKind.Utc);
+        }
 
+        private DateTime lastActive;
+        public DateTime LastActive
+        {
+            get => lastActive;
+            set => lastActive = DateTime.SpecifyKind(value, DateTimeKind.Utc);
+        }
         public string Gender { get; set; }  
 
         public string Introduction { get; set; }
